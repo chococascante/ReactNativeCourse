@@ -1,16 +1,24 @@
 import React from 'react';
-import {Text, View} from 'react-native';
+import {Text, View, StyleSheet} from 'react-native';
 
 export default class PropsEjemplo extends React.Component {
   render() {
     return (
-      <View>
-        <Text>{this.props.name}</Text>
-        <Text> {this.props.contador}</Text>
+      <View style={styles.container}>
+        <View>
+          <Text>{this.props.name}</Text>
+          <Text> {this.props.contador}</Text>
+        </View>
       </View>
     );
   }
 }
+
+const styles = StyleSheet.create({
+  container: {
+    backgroundColor: 'red',
+  },
+});
 
 /*
     Pasos para crear el componente:

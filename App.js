@@ -1,6 +1,13 @@
 import React, {useState, useEffect} from 'react';
-import {StyleSheet, View, Text, Button} from 'react-native';
-import PropsEjemplo from './PropsEjemplo';
+import {StyleSheet, View, Text, Button, SafeAreaView} from 'react-native';
+import Card from './src/components/Card';
+
+const students = [
+  {name: 'Adolfo', lastName: 'Valverde'},
+  {name: 'Allan', lastName: 'Cordero'},
+  {name: 'Kenny', lastName: 'Cardenas'},
+  {name: 'Laura', lastName: 'Garcia'},
+];
 
 const App: () => React$Node = () => {
   const [showPropsHook, setShowPropsHook] = useState(false);
@@ -23,18 +30,25 @@ const App: () => React$Node = () => {
   }, []);
 
   return (
-    <View>
-      {showPropsHook ? (
-        <PropsEjemplo name={textoLargo} contador={contador} />
-      ) : (
-        <Text>{No hay datos}</Text>
-      )}
-    </View>
+    <SafeAreaView style={styles.container}>
+      {students.map((student) => (
+        <Card
+          key={`${student.name}`}
+          studentName={student.name}
+          lastName={student.lastName}
+        />
+      ))}
+    </SafeAreaView>
   );
 };
 
 export default App;
 
 const styles = StyleSheet.create({
-  
+  container: {
+    width: '100%',
+    height: '100%',
+    display: 'flex',
+    padding: 15,
+  },
 });
