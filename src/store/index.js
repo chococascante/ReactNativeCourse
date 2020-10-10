@@ -1,6 +1,2 @@
-import {createStore} from 'redux';
-import PostsReducer from './reducers/Posts';
-
-export default function createReduxStore() {
-  createStore(PostsReducer);
-}
+export {default as posts} from './reducers/Posts';
+export {default as photos} from './reducers/Photos';

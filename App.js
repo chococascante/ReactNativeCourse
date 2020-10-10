@@ -7,15 +7,14 @@ import {ThemeProvider} from 'emotion-theming';
 import {Provider} from 'react-redux';
 
 // import createReduxStore from './src/store';
-import {createStore} from 'redux';
-import PostsReducer from './src/store/reducers/Posts';
+import configureStore from './src/store/configureStore';
 
 const theme = {
   blue: '#0000ff',
   background: '#ccc',
 };
 
-const store = createStore(PostsReducer);
+const store = configureStore();
 
 const App: () => React$Node = () => {
   return (
