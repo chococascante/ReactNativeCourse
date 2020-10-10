@@ -1,9 +1,17 @@
 import React from 'react';
 import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
+import {setCurrentPostRedux} from '../../store/actions/Posts';
+import {useDispatch} from 'react-redux';
 
 const Post = ({post, setCurrentPost}) => {
+  const dispatch = useDispatch();
+
+  const handlePress = () => {
+    dispatch(setCurrentPostRedux(post));
+    setCurrentPost(post);
+  };
   return (
-    <TouchableOpacity onPress={() => setCurrentPost(post)}>
+    <TouchableOpacity onPress={handlePress}>
       <View style={styles.container}>
         <Text style={styles.title}>{post.title}</Text>
       </View>
