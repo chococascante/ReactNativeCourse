@@ -2,12 +2,17 @@ import React from 'react';
 import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
 import {setCurrentPostRedux} from '../../store/actions/Posts';
 import {useDispatch} from 'react-redux';
+import {useNavigation} from '@react-navigation/native';
 
 const Post = ({post}) => {
   const dispatch = useDispatch();
 
+  const navigation = useNavigation();
+  console.warn(navigation);
+
   const handlePress = () => {
     dispatch(setCurrentPostRedux(post));
+    navigation.navigate('CurrentPost');
   };
 
   return (

@@ -1,8 +1,10 @@
 import React, {Component} from 'react';
 import {Text, View} from 'react-native';
 import PropsEjemplo from './PropsEjemplo';
+import {connect} from 'react-redux';
+import {getPosts, setCurrentPostRedux} from '../../store/actions/Posts';
 
-export class AppClass extends Component {
+class AppClass extends Component {
   constructor(props) {
     super(props);
 
@@ -25,6 +27,7 @@ export class AppClass extends Component {
   componentDidMount() {
     setTimeout(() => {
       this.changeName();
+      this.props.getPosts();
     }, 2000);
   }
 
@@ -42,4 +45,17 @@ export class AppClass extends Component {
   }
 }
 
-export default AppClass;
+const mapStateToProps = (state) => ({
+  currentPost: state.posts.currentPost,
+  posts: state.posts.posts,
+  loaded: state.posts.loaded,
+});
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    setCurrentPost: () => dispatch(setCurrentPostRedux),
+    getPosts: () => dispatch(getPosts),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(AppClass);

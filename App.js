@@ -1,8 +1,7 @@
 import React from 'react';
 import {SafeAreaView, StyleSheet} from 'react-native';
-import MainContainer from './src/components/MainContainer';
+import RootNavigator from './src/navigation';
 
-import styled, {css} from '@emotion/native';
 import {ThemeProvider} from 'emotion-theming';
 import {Provider} from 'react-redux';
 
@@ -21,7 +20,7 @@ const App: () => React$Node = () => {
     <ThemeProvider theme={theme}>
       <Provider store={store}>
         <SafeAreaView style={styles.container}>
-          <MainContainer />
+          <RootNavigator />
         </SafeAreaView>
       </Provider>
     </ThemeProvider>
